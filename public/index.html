@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#101010"
+  >
+
+  <title>VYROX STUDIO</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="background-glow"></div>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">V</div>
+
+        <div>
+          <h2>VYROX</h2>
+          <span>CREATIVE STUDIO</span>
+        </div>
+      </div>
+
+      <div class="menu-label">WORKSPACE</div>
+
+      <nav class="navigation">
+
+        <button
+          class="nav-item active"
+          data-page="overview"
+        >
+          <span>⌂</span>
+          Overview
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="photo"
+        >
+          <span>▧</span>
+          Photo Studio
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="video"
+        >
+          <span>▶</span>
+          Video Studio
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="ai"
+        >
+          <span>✧</span>
+          AI Studio
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="effects"
+        >
+          <span>◈</span>
+          Effects & Assets
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="settings"
+        >
+          <span>⚙</span>
+          Settings
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="developer-card">
+          <span>DEVELOPED BY</span>
+          <strong>Rishikesh Singh</strong>
+          <small>VYROX STUDIO</small>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <div>
+          <span class="top-label">CREATIVE WORKSPACE</span>
+          <h1 id="pageTitle">Overview</h1>
+        </div>
+
+        <div class="top-actions">
+
+          <span class="online-status">
+            <span class="status-dot"></span>
+            System Online
+          </span>
+
+          <div class="profile">
+            RS
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- OVERVIEW -->
+
+      <section
+        class="page active"
+        id="overview"
+      >
+
+        <div class="hero">
+
+          <div class="hero-content">
+
+            <span class="eyebrow">
+              YOUR CREATIVE UNIVERSE
+            </span>
+
+            <h2>
+              Create beyond
+              <span>limits.</span>
+            </h2>
+
+            <p>
+              One workspace for your photos, videos,
+              creative ideas and AI assistance.
+            </p>
+
+            <button
+              class="primary-btn"
+              onclick="showPage('photo')"
+            >
+              Start Creating →
+            </button>
+
+          </div>
+
+          <div class="hero-orb">
+            <div class="orb-inner">V</div>
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <h2>Your workspace</h2>
+            <p>Choose your creative tool.</p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+
+          <div
+            class="feature-card"
+            onclick="showPage('photo')"
+          >
+            <div class="feature-icon">▧</div>
+            <h3>Photo Studio</h3>
+            <p>Edit images with filters and adjustments.</p>
+            <span>OPEN STUDIO →</span>
+          </div>
+
+          <div
+            class="feature-card"
+            onclick="showPage('video')"
+          >
+            <div class="feature-icon">▶</div>
+            <h3>Video Studio</h3>
+            <p>Preview videos and audio in one workspace.</p>
+            <span>OPEN STUDIO →</span>
+          </div>
+
+          <div
+            class="feature-card"
+            onclick="showPage('ai')"
+          >
+            <div class="feature-icon">✧</div>
+            <h3>AI Studio</h3>
+            <p>Get creative suggestions from your AI assistant.</p>
+            <span>OPEN STUDIO →</span>
+          </div>
+
+          <div
+            class="feature-card"
+            onclick="showPage('effects')"
+          >
+            <div class="feature-icon">◈</div>
+            <h3>Effects & Assets</h3>
+            <p>Explore editing presets and visual effects.</p>
+            <span>EXPLORE →</span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- PHOTO STUDIO -->
+
+      <section
+        class="page"
+        id="photo"
+      >
+
+        <div class="section-heading">
+          <div>
+            <h2>Photo Studio</h2>
+            <p>Upload and edit your photographs.</p>
+          </div>
+        </div>
+
+        <div class="editor-layout">
+
+          <div class="preview-panel">
+
+            <div class="panel-top">
+              <span>IMAGE PREVIEW</span>
+              <span class="small-status">LIVE</span>
+            </div>
+
+            <div class="image-stage">
+
+              <div
+                id="emptyPhoto"
+                class="empty-state"
+              >
+                <div class="upload-symbol">＋</div>
+
+                <h3>Upload an image</h3>
+
+                <p>
+                  Choose an image from your device
+                  to begin editing.
+                </p>
+
+                <label
+                  class="primary-btn"
+                  for="photoUpload"
+                >
+                  Choose Image
+                </label>
+
+              </div>
+
+              <canvas
+                id="photoCanvas"
+                hidden
+              ></canvas>
+
+            </div>
+
+            <div class="export-row">
+
+              <button
+                class="secondary-btn"
+                onclick="resetPhoto()"
+              >
+                Reset
+              </button>
+
+              <button
+                class="primary-btn"
+                onclick="exportPhoto()"
+              >
+                Export PNG ↓
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="controls-panel">
+
+            <div class="panel-top">
+              <span>ADJUSTMENTS</span>
+            </div>
+
+            <div class="control-group">
+
+              <label>
+                Brightness
+                <span id="brightnessValue">100%</span>
+              </label>
+
+              <input
+                type="range"
+                id="brightness"
+                min="0"
+                max="200"
+                value="100"
+              >
+
+            </div>
+
+            <div class="control-group">
+
+              <label>
+                Contrast
+                <span id="contrastValue">100%</span>
+              </label>
+
+              <input
+                type="range"
+                id="contrast"
+                min="0"
+                max="200"
+                value="100"
+              >
+
+            </div>
+
+            <div class="control-group">
+
+              <label>
+                Saturation
+                <span id="saturationValue">100%</span>
+              </label>
+
+              <input
+                type="range"
+                id="saturation"
+                min="0"
+                max="200"
+                value="100"
+              >
+
+            </div>
+
+            <div class="control-group">
+
+              <label>
+                Warmth
+                <span id="warmthValue">0</span>
+              </label>
+
+              <input
+                type="range"
+                id="warmth"
+                min="-100"
+                max="100"
+                value="0"
+              >
+
+            </div>
+
+            <div class="control-group">
+
+              <label>Filters</label>
+
+              <div class="filter-grid">
+
+                <button
+                  class="filter-btn active"
+                  data-filter="original"
+                >
+                  Original
+                </button>
+
+                <button
+                  class="filter-btn"
+                  data-filter="mono"
+                >
+                  Mono
+                </button>
+
+                <button
+                  class="filter-btn"
+                  data-filter="vivid"
+                >
+                  Vivid
+                </button>
+
+                <button
+                  class="filter-btn"
+                  data-filter="fade"
+                >
+                  Fade
+                </button>
+
+                <button
+                  class="filter-btn"
+                  data-filter="cool"
+                >
+                  Cool
+                </button>
+
+                <button
+                  class="filter-btn"
+                  data-filter="warm"
+                >
+                  Warm
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="control-group">
+
+              <label>Transform</label>
+
+              <div class="transform-row">
+
+                <button
+                  class="secondary-btn"
+                  onclick="rotatePhoto()"
+                >
+                  ↻ Rotate
+                </button>
+
+                <button
+                  class="secondary-btn"
+                  onclick="flipPhoto()"
+                >
+                  ⇋ Flip
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <input
+          type="file"
+          id="photoUpload"
+          accept="image/*"
+          hidden
+        >
+
+      </section>
+
+      <!-- VIDEO STUDIO -->
+
+      <section
+        class="page"
+        id="video"
+      >
+
+        <div class="section-heading">
+          <div>
+            <h2>Video Studio</h2>
+            <p>Preview your video and audio files.</p>
+          </div>
+        </div>
+
+        <div class="video-layout">
+
+          <div class="video-preview panel">
+
+            <div class="panel-top">
+              <span>VIDEO MONITOR</span>
+              <span class="small-status">PREVIEW</span>
+            </div>
+
+            <div class="video-screen">
+
+              <video
+                id="videoPlayer"
+                controls
+                playsinline
+              ></video>
+
+              <div
+                id="videoPlaceholder"
+                class="empty-state"
+              >
+                <div class="upload-symbol">▶</div>
+
+                <h3>No video selected</h3>
+
+                <p>Upload a video to preview it.</p>
+
+              </div>
+
+            </div>
+
+            <div class="export-row">
+
+              <label
+                for="videoUpload"
+                class="primary-btn"
+              >
+                Upload Video
+              </label>
+
+              <label
+                for="audioUpload"
+                class="secondary-btn"
+              >
+                Upload Audio
+              </label>
+
+            </div>
+
+            <input
+              type="file"
+              id="videoUpload"
+              accept="video/*"
+              hidden
+            >
+
+            <input
+              type="file"
+              id="audioUpload"
+              accept="audio/*"
+              hidden
+            >
+
+            <div class="audio-area">
+
+              <h3>Audio Player</h3>
+
+              <audio
+                id="audioPlayer"
+                controls
+              ></audio>
+
+            </div>
+
+          </div>
+
+          <div class="timeline-panel panel">
+
+            <div class="panel-top">
+              <span>EDITING TIMELINE</span>
+            </div>
+
+            <div class="timeline">
+
+              <div class="timeline-track">
+                <span>VIDEO TRACK</span>
+
+                <div class="track-line">
+                  <div class="track-block">
+                    VIDEO PREVIEW
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-track">
+                <span>AUDIO TRACK</span>
+
+                <div class="track-line">
+                  <div class="audio-block">
+                    AUDIO
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <p class="timeline-note">
+              This starter timeline is a visual preview.
+              It does not render or export edited videos.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- AI STUDIO -->
+
+      <section
+        class="page"
+        id="ai"
+      >
+
+        <div class="section-heading">
+          <div>
+            <h2>AI Studio</h2>
+            <p>Your creative AI assistant.</p>
+          </div>
+        </div>
+
+        <div class="ai-panel panel">
+
+          <div class="ai-heading">
+
+            <div class="ai-icon">✧</div>
+
+            <div>
+              <h3>VYROX AI</h3>
+              <span>CREATIVE ASSISTANT</span>
+            </div>
+
+          </div>
+
+          <div
+            id="chatMessages"
+            class="chat-messages"
+          >
+
+            <div class="message ai-message">
+              Hello! I'm VYROX AI. I can help you with
+              editing ideas, creative prompts, photo
+              styles and video concepts.
+            </div>
+
+          </div>
+
+          <form id="chatForm" class="chat-form">
+
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Ask VYROX AI anything..."
+              maxlength="4000"
+              required
+            >
+
+            <button
+              type="submit"
+              class="primary-btn"
+            >
+              Send →
+            </button>
+
+          </form>
+
+          <p class="ai-disclaimer">
+            AI responses require a configured server API key.
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- EFFECTS -->
+
+      <section
+        class="page"
+        id="effects"
+      >
+
+        <div class="section-heading">
+          <div>
+            <h2>Effects & Assets</h2>
+            <p>Explore available photo presets.</p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+
+          <div class="effect-card">
+            <div class="effect-preview mono-preview"></div>
+            <h3>Monochrome</h3>
+            <p>Classic black and white.</p>
+          </div>
+
+          <div class="effect-card">
+            <div class="effect-preview warm-preview"></div>
+            <h3>Warm Tone</h3>
+            <p>Warm visual atmosphere.</p>
+          </div>
+
+          <div class="effect-card">
+            <div class="effect-preview cool-preview"></div>
+            <h3>Cool Tone</h3>
+            <p>Cool visual atmosphere.</p>
+          </div>
+
+          <div class="effect-card">
+            <div class="effect-preview vivid-preview"></div>
+            <h3>Vivid</h3>
+            <p>Enhanced colour intensity.</p>
+          </div>
+
+        </div>
+
+        <button
+          class="primary-btn"
+          onclick="showPage('photo')"
+        >
+          Open Photo Studio →
+        </button>
+
+      </section>
+
+      <!-- SETTINGS -->
+
+      <section
+        class="page"
+        id="settings"
+      >
+
+        <div class="section-heading">
+          <div>
+            <h2>Settings</h2>
+            <p>Website information and system status.</p>
+          </div>
+        </div>
+
+        <div class="settings-panel panel">
+
+          <div class="setting-row">
+            <div>
+              <h3>Website Name</h3>
+              <p>VYROX STUDIO</p>
+            </div>
+            <span class="setting-tag">ACTIVE</span>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <h3>Developer</h3>
+              <p>Rishikesh Singh</p>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <h3>AI Connection</h3>
+              <p id="aiStatus">Checking connection...</p>
+            </div>
+            <span class="setting-tag">SERVER</span>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <h3>Application Version</h3>
+              <p>1.0.0</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <footer>
+        <span>VYROX STUDIO</span>
+        <span>CREATED BY RISHIKESH SINGH</span>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
