@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f7f4">
+<title>RISH EDITOR STUDIO</title>
+<link rel="stylesheet" href="visual_studio.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <span class="brand-icon">R</span>
+        <span>RISH EDITOR</span>
+    </div>
+
+    <div class="header-actions">
+        <button id="themeButton">Theme</button>
+        <button id="exportButton">Export</button>
+    </div>
+</header>
+
+<main class="app">
+
+    <section class="welcome">
+        <p class="eyebrow">CREATIVE WORKSPACE</p>
+        <h1>Make something<br> <span>extraordinary.</span></h1>
+        <p>Professional creative tools in one workspace.</p>
+    </section>
+
+    <section class="workspace">
+
+        <aside class="sidebar">
+            <button class="tool active" data-tool="media">Media</button>
+            <button class="tool" data-tool="adjust">Adjust</button>
+            <button class="tool" data-tool="filters">Filters</button>
+            <button class="tool" data-tool="text">Text</button>
+            <button class="tool" data-tool="effects">Effects</button>
+        </aside>
+
+        <section class="editor-area">
+
+            <div class="preview-header">
+                <h2>Preview Studio</h2>
+                <span id="status">Ready</span>
+            </div>
+
+            <div class="preview">
+                <img id="previewImage"
+                     alt="Editing preview"
+                     hidden>
+
+                <div id="emptyState">
+                    <div class="upload-icon">＋</div>
+                    <h3>Your canvas is waiting</h3>
+                    <p>Upload an image to begin editing.</p>
+                    <label class="upload-button">
+                        Upload Image
+                        <input type="file"
+                               id="imageInput"
+                               accept="image/*"
+                               hidden>
+                    </label>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h3>Editing Timeline</h3>
+                <div class="timeline-track">
+                    <div class="timeline-item">Media Track</div>
+                    <div class="timeline-item">Effects Track</div>
+                </div>
+            </div>
+
+        </section>
+
+        <aside class="properties">
+            <h3>Properties</h3>
+
+            <div id="toolPanel">
+                <p>Select a tool to begin.</p>
+            </div>
+        </aside>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Developed by <strong>Rishikesh Singh</strong></p>
+    <p>RISH EDITOR STUDIO © 2026</p>
+</footer>
+
+<script src="media_controller.js"></script>
+<script src="rendering_system.js"></script>
+
+</body>
+</html>
